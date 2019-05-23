@@ -6,16 +6,13 @@
 
 ### Links and Resources
 
-- [submission PR](http://xyz.com)
-- [travis](http://xyz.com)
-- [back-end](http://xyz.com) (when applicable)
-- [front-end](http://xyz.com) (when applicable)
+- [submission PR](https://github.com/401-advanced-javascript-joejemmely/lab-09/pull/1)
+- [travis](https://travis-ci.com/401-advanced-javascript-joejemmely/lab-09)
 
 #### Documentation
 
-- [api docs](http://xyz.com) (API servers)
-- [jsdoc](http://xyz.com) (Server assignments)
-- [styleguide](http://xyz.com) (React assignments)
+- [api docs](https://lab-09-joejemmely.herokuapp.com/api/v1/doc/) (API servers)
+- [jsdoc](https://lab-09-joejemmely.herokuapp.com/doc/) (Server assignments)
 
 ### Modules
 
