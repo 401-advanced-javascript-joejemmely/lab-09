@@ -14,9 +14,18 @@ const modelFinder = require(`${cwd}/src/middleware/model-finder.js`);
 
 const router = express.Router();
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../../docs/config/swagger.json');
+
+// JSDocs
+router.use('/doc', express.static('./docs/'));
+
+// Swagger Route
+router.use('/api/v1/doc', swaggerUi.serve);
+router.get('/api/v1/doc', swaggerUi.setup(swaggerDocument));
+
 // Evaluate the model, dynamically
 router.param('model', modelFinder);
-
 
 // API Routes
 router.get('/api/v1/:model', handleGetAll);
@@ -28,43 +37,45 @@ router.delete('/api/v1/:model/:id', handleDelete);
 
 // Route Handlers
 
-
-function handleGetAll(request,response,next) {
-  request.model.get()
-    .then( data => {
+function handleGetAll(request, response, next) {
+  request.model
+    .get()
+    .then(data => {
       const output = {
         count: data.length,
         results: data,
       };
       response.status(200).json(output);
     })
-    .catch( next );
+    .catch(next);
 }
 
-function handleGetOne(request,response,next) {
-  request.model.get(request.params.id)
-    .then( result => response.status(200).json(result[0]) )
-    .catch( next );
+function handleGetOne(request, response, next) {
+  request.model
+    .get(request.params.id)
+    .then(result => response.status(200).json(result[0]))
+    .catch(next);
 }
 
-
-function handlePost(request,response,next) {
-  request.model.post(request.body)
-    .then( result => response.status(200).json(result) )
-    .catch( next );
+function handlePost(request, response, next) {
+  request.model
+    .post(request.body)
+    .then(result => response.status(200).json(result))
+    .catch(next);
 }
 
-
-function handlePut(request,response,next) {
-  request.model.put(request.params.id, request.body)
-    .then( result => response.status(200).json(result) )
-    .catch( next );
+function handlePut(request, response, next) {
+  request.model
+    .put(request.params.id, request.body)
+    .then(result => response.status(200).json(result))
+    .catch(next);
 }
 
-function handleDelete(request,response,next) {
-  request.model.delete(request.params.id)
-    .then( result => response.status(200).json(result) )
-    .catch( next );
+function handleDelete(request, response, next) {
+  request.model
+    .delete(request.params.id)
+    .then(result => response.status(200).json(result))
+    .catch(next);
 }
 
 module.exports = router;
