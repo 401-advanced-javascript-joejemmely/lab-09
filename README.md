@@ -12,21 +12,8 @@
 #### Documentation
 
 - [api docs](https://lab-09-joejemmely.herokuapp.com/api/v1/doc/) (API servers)
+  - The swagger documentation doesn't reflect the :model parameter because in this particular case, the routes are not created automatically when a new model is created. The users reading the api doc wants to know what routes to use and what they return. The :model parameter do not matter for them. It would be different if they were able to create new routes through the api.
 - [jsdoc](https://lab-09-joejemmely.herokuapp.com/doc/) (Server assignments)
-
-### Modules
-
-#### `modulename.js`
-
-##### Exported Values and Methods
-
-###### `foo(thing) -> string`
-
-Usage Notes or examples
-
-###### `bar(array) -> array`
-
-Usage Notes or examples
 
 ### Setup
 
@@ -38,17 +25,14 @@ Usage Notes or examples
 #### Running the app
 
 - `npm start`
-- Endpoint: `/foo/bar/`
-  - Returns a JSON object with abc in it.
-- Endpoint: `/bing/zing/`
-
-  - Returns a JSON object with xyz in it.
+- Endpoint: `api/v1/categories`
+- Endpoint: `api/v1/players`
+- Endpoint: `api/v1/teams`
 
 #### Tests
 
-- How do you run tests?
-- What assertions were made?
-- What assertions need to be / should be made?
+- How do you run tests? `npm test`
+- What assertions were made? Models and server are partially tested
 
 #### UML
 
