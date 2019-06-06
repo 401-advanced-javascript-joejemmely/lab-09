@@ -17,6 +17,9 @@ const router = express.Router();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../../docs/config/swagger.json');
 
+const events = require('../../utils/events.js');
+const QClient = require('@nmq/q/client');
+
 // JSDocs
 router.use('/doc', express.static('./docs/'));
 
@@ -45,6 +48,10 @@ function handleGetAll(request, response, next) {
         count: data.length,
         results: data,
       };
+      QClient.publish('database', events.database.READ, {
+        message: 'Something was read',
+        data,
+      });
       response.status(200).json(output);
     })
     .catch(next);
@@ -53,28 +60,52 @@ function handleGetAll(request, response, next) {
 function handleGetOne(request, response, next) {
   request.model
     .get(request.params.id)
-    .then(result => response.status(200).json(result[0]))
+    .then(result => {
+      QClient.publish('database', events.database.READ, {
+        message: 'Something was read',
+        data: result,
+      });
+      return response.status(200).json(result[0]);
+    })
     .catch(next);
 }
 
 function handlePost(request, response, next) {
   request.model
     .post(request.body)
-    .then(result => response.status(200).json(result))
+    .then(result => {
+      QClient.publish('database', events.database.CREATE, {
+        message: 'Something was created',
+        data: result,
+      });
+      return response.status(200).json(result);
+    })
     .catch(next);
 }
 
 function handlePut(request, response, next) {
   request.model
     .put(request.params.id, request.body)
-    .then(result => response.status(200).json(result))
+    .then(result => {
+      QClient.publish('database', events.database.UPDATE, {
+        message: 'Something was updated',
+        data: result,
+      });
+      return response.status(200).json(result);
+    })
     .catch(next);
 }
 
 function handleDelete(request, response, next) {
   request.model
     .delete(request.params.id)
-    .then(result => response.status(200).json(result))
+    .then(result => {
+      QClient.publish('database', events.database.DELETE, {
+        message: 'Something was deleted',
+        data: result,
+      });
+      return response.status(200).json(result);
+    })
     .catch(next);
 }
 
