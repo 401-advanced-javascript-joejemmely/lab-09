@@ -30,23 +30,30 @@
       },
       "post": {
         "tags": ["teams"],
-        "description": "Add a new team",
+        "description": "Auto generated using Swagger Inspector",
         "requestBody": {
           "content": {
-            "application/json; charset=utf-8": {
+            "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Teams"
+                "$ref": "#/components/schemas/body"
+              },
+              "examples": {
+                "0": {
+                  "value": "{\n    \"name\":\"Bunnies\"\n}"
+                }
               }
             }
           }
         },
         "responses": {
           "200": {
+            "description": "Auto generated using Swagger Inspector",
             "content": {
               "application/json; charset=utf-8": {
                 "schema": {
-                  "$ref": "#/components/schemas/Teams"
-                }
+                  "type": "string"
+                },
+                "examples": {}
               }
             }
           }
@@ -56,14 +63,16 @@
     "/api/v1/teams/5ce7186b0d868f0017ec1dbc": {
       "get": {
         "tags": ["teams"],
-        "description": "Get a team by id",
+        "description": "Auto generated using Swagger Inspector",
         "responses": {
           "200": {
+            "description": "Auto generated using Swagger Inspector",
             "content": {
               "application/json; charset=utf-8": {
                 "schema": {
-                  "$ref": "#/components/schemas/Teams"
-                }
+                  "type": "string"
+                },
+                "examples": {}
               }
             }
           }
@@ -71,23 +80,30 @@
       },
       "put": {
         "tags": ["teams"],
-        "description": "Modify a team",
+        "description": "Auto generated using Swagger Inspector",
         "requestBody": {
           "content": {
-            "application/json; charset=utf-8": {
+            "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Teams"
+                "$ref": "#/components/schemas/body_1"
+              },
+              "examples": {
+                "0": {
+                  "value": "{\n    \"name\":\"Tiger\"\n}"
+                }
               }
             }
           }
         },
         "responses": {
           "200": {
+            "description": "Auto generated using Swagger Inspector",
             "content": {
               "application/json; charset=utf-8": {
                 "schema": {
-                  "$ref": "#/components/schemas/Teams"
-                }
+                  "type": "string"
+                },
+                "examples": {}
               }
             }
           }
@@ -95,14 +111,16 @@
       },
       "delete": {
         "tags": ["teams"],
-        "description": "Remove a team",
+        "description": "Auto generated using Swagger Inspector",
         "responses": {
           "200": {
+            "description": "Auto generated using Swagger Inspector",
             "content": {
               "application/json; charset=utf-8": {
                 "schema": {
-                  "$ref": "#/components/schemas/Teams"
-                }
+                  "type": "string"
+                },
+                "examples": {}
               }
             }
           }
@@ -112,13 +130,17 @@
     "/api/v1/players": {
       "get": {
         "tags": ["players"],
-        "description": "Get players",
+        "description": "Auto generated using Swagger Inspector",
         "responses": {
           "200": {
+            "description": "Auto generated using Swagger Inspector",
             "content": {
               "application/json; charset=utf-8": {
                 "schema": {
-                  "$ref": "#/components/schemas/Players"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Player"
+                  }
                 }
               }
             }
